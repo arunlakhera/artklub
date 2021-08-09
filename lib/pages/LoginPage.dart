@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/pages/RegisterPage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,199 +11,228 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>{
+
   @override
   Widget build(BuildContext context) {
+
+    final screenheight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Image.asset(
-                      'assets/images/artklub_logo.png',
-                      width: 150,
-                      height: 150,
-                    ),
-                  ),
-                  Text(
-                    'Give Wings to',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                  Text(
-                    'Your Imagination',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-
-                  Form(
+          scrollDirection: Axis.vertical,
+          child: Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 80),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.only(top: 30),
                       child: Column(
-                        children: [],
-                      )
-                  ),
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/artklub_logo.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                          Text(
+                            'Give Wings to',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                          Text(
+                            'Your Imagination',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
 
+                    SizedBox(height: 20),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                      child: Text(
+                        'Hello',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'There',
+                            style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '.',
+                            style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
 
-                ],
+                    Container(
+                      padding: EdgeInsets.only(top: 35,left: 20,right: 20),
+                      child: Column(
+                        children: [
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.green,
+                                    ),
+                                ),
+                            ),
+                            obscureText: true,
+                          ),
+                          SizedBox(height: 10),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: (){},
+                              child: Text(
+                                'Forgot Password',
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 30),
+
+                          Container(
+                            height: 50,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.yellow,
+                              shadowColor: Colors.greenAccent,
+                              elevation: 7,
+                              child: GestureDetector(
+                                onTap: (){},
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+
+                  ],
+                ),
               ),
-            ),
+
+              Container(
+                padding: EdgeInsets.fromLTRB(0, screenheight - (screenheight * 0.12), 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'New to ArtKlub?',
+                      style: TextStyle(
+                        fontFamily: 'Robto',
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: RegisterPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          fontFamily: 'Robot',
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          // child: Container(
-          //   margin: EdgeInsets.only(left: 10, right: 10,top: 10,bottom: 10),
-          //   child: Column(
-          //     children: <Widget>[
-          //       SizedBox(height: 20,),
-          //       Center(
-          //         child: Container(
-          //           child: Column(
-          //             children: [
-          //               SizedBox(height: 20,),
-          //               Container(
-          //                 height: 120,
-          //                 width: 150,
-          //                 child: Image.asset(
-          //                   'assets/images/artklub_logo.png',
-          //                   fit: BoxFit.fill,
-          //                 ),
-          //               ),
-          //               SizedBox(height: 20,),// Please check the image
-          //               Text(
-          //                 " Give Wings to",
-          //                 style: TextStyle(fontSize: 25.0),
-          //               ),
-          //               SizedBox(height: 10,),
-          //               Text(
-          //                 "Your Imagination",
-          //                 style: TextStyle(fontSize: 25.0, color: Colors.green),
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //       Padding(
-          //         padding: EdgeInsets.symmetric(horizontal: 15),
-          //         child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: <Widget>[
-          //             Text(
-          //               "Email Id",
-          //               style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
-          //             ),
-          //             SizedBox(
-          //               height: 10,
-          //             ),
-          //             TextField(
-          //                 decoration: InputDecoration(
-          //                     border: InputBorder.none,
-          //                     fillColor: Color(0xfff3f3f4),
-          //                     filled: true))
-          //           ],
-          //         ),
-          //       ),
-          //       Padding(
-          //         padding: const EdgeInsets.only(
-          //             left: 15.0, right: 15.0, top: 15, bottom: 0),
-          //         child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: <Widget>[
-          //             Text(
-          //               "Password",
-          //               style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
-          //             ),
-          //             SizedBox(
-          //               height: 10,
-          //             ),
-          //             TextField(
-          //                 decoration: InputDecoration(
-          //                     border: InputBorder.none,
-          //                     fillColor: Color(0xfff3f3f4),
-          //                     filled: true,
-          //                     suffixIcon: new GestureDetector(
-          //                         child: new Icon(
-          //                       Icons.remove_red_eye,
-          //                       color: Colors.grey,
-          //                     ))))
-          //           ],
-          //         ),
-          //       ),
-          //       TextButton(
-          //         onPressed: () {
-          //           //TODO FORGOT PASSWORD SCREEN GOES HERE
-          //         },
-          //         child: Align(
-          //           alignment: Alignment.centerRight,
-          //           child: Text(
-          //             'Forget Password ?',
-          //             style: TextStyle(color: Colors.black, fontSize: 15),
-          //           ),
-          //         ),
-          //       ),
-          //       Container(
-          //         width: MediaQuery.of(context).size.width,
-          //         height: 40,
-          //         margin: EdgeInsets.all(10),
-          //         child: ElevatedButton(
-          //           onPressed: () {},
-          //           child: Text('Login',style: TextStyle(color: Colors.black),),
-          //           style: ButtonStyle(
-          //             backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          //               (Set<MaterialState> states) {
-          //                 if (states.contains(MaterialState.pressed))
-          //                   return Colors.green;
-          //                 return Colors.yellow;
-          //               },
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //       SizedBox(
-          //         height: 130,
-          //       ),
-          //       TextButton(
-          //         onPressed: () {
-          //           Navigator.push(context,
-          //               MaterialPageRoute(builder: (context) => RegisterPage()));
-          //         },
-          //         child: RichText(
-          //           text: TextSpan(
-          //             style: DefaultTextStyle.of(context).style,
-          //             children: <TextSpan>[
-          //               TextSpan(
-          //                 text: "Don't have an Account ? ",
-          //                 style: TextStyle(fontSize: 14, color: Colors.grey),
-          //               ),
-          //               TextSpan(
-          //                 text: 'Sign up',
-          //                 style: TextStyle(
-          //                     fontWeight: FontWeight.w800,
-          //                     color: Colors.green,
-          //                     fontSize: 14),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
         ),
       ),
     );
   }
 }
+

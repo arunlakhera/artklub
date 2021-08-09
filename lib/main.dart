@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/pages/LoginPage.dart';
+import 'package:flutter_apps/pages/RegisterPage.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +18,28 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: LoginPage(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/RegisterPage':
+            return PageTransition(
+              child: RegisterPage(),
+              type: PageTransitionType.leftToRight,
+              settings: settings,
+              reverseDuration: Duration(seconds: 3),
+            );
+            break;
+          case '/LoginPage':
+            return PageTransition(
+              child: LoginPage(),
+              type: PageTransitionType.fade,
+              settings: settings,
+              reverseDuration: Duration(seconds: 3),
+            );
+            break;
+          default:
+            return null;
+        }
+      },
     );
   }
 }
