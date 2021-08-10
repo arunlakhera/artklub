@@ -16,6 +16,8 @@ dependencies:
   flutter_native_splash: ^1.2.1 # Added for splash screen
   page_transition: "^2.0.0" # Added for Page Transition Animation
   font_awesome_flutter: ^9.1.0 # Added for icons
+  fancy_bar: ^2.0.0
+  salomon_bottom_bar: ^3.1.0
 
 dev_dependencies:
   flutter_test:

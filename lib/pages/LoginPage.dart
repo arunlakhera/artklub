@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/pages/ForgotPasswordPage.dart';
+import 'package:flutter_apps/pages/HomePage.dart';
 import 'package:flutter_apps/pages/RegisterPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
@@ -20,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenheight = MediaQuery.of(context).size.height;
+    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     
     return Scaffold(
@@ -32,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Stack(
             children: [
               Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(5),
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 80),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(top: 35, left: 20, right: 20),
+                      padding: EdgeInsets.only(top: 30, left: 10, right: 10),
                       child: Column(
                         children: [
                           Material(
@@ -251,7 +253,15 @@ class _LoginPageState extends State<LoginPage> {
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.centerRight,
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ForgotPasswordPage(),
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'Forgot Password',
                                 style: TextStyle(
@@ -264,28 +274,32 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(height: 30),
-                          Container(
-                            height: 50,
-                            child: Material(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.yellow,
-                              shadowColor: Colors.greenAccent,
-                              elevation: 7,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Center(
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      fontFamily: 'Quicksand',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                    ),
+                          ElevatedButton(
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.leftToRight,
+                                    child: HomePage(),
                                   ),
-                                ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                elevation: 5,
+                                fixedSize: Size(screenWidth - 20.0,50.0),
+                                primary: Colors.yellow,
+                                shadowColor: Colors.greenAccent,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))
                               ),
-                            ),
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
+                              )
                           ),
                         ],
                       ),
@@ -295,7 +309,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(
-                    0, screenheight - (screenheight * 0.12), 0, 0),
+                    0, screenHeight - (screenHeight * 0.12), 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
