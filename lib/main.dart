@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           case '/LoginPage':
             return PageTransition(
               child: LoginPage(),
-              type: PageTransitionType.fade,
+              type: PageTransitionType.rightToLeft,
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );

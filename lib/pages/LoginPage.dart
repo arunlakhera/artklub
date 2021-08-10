@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/pages/RegisterPage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,14 +13,16 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>{
+class _LoginPageState extends State<LoginPage> {
+
+  bool _obscureText = true;
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
-
     final screenheight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
+    
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -39,10 +43,24 @@ class _LoginPageState extends State<LoginPage>{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            'assets/images/artklub_logo.png',
-                            width: 100,
-                            height: 100,
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(80),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.yellow.shade100,
+                                    spreadRadius: 40,
+                                    blurRadius: 40,
+                                    offset: Offset(10, 10), // changes position of shadow
+                                  ),
+                                ],
+                            ),
+                            child: Image.asset(
+                              'assets/images/artklub_logo.png',
+                              width: 100,
+                              height: 100,
+
+                            ),
                           ),
                           Text(
                             'Give Wings to',
@@ -51,6 +69,13 @@ class _LoginPageState extends State<LoginPage>{
                               fontFamily: 'Quicksand',
                               fontWeight: FontWeight.w600,
                               color: Colors.black.withOpacity(0.5),
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 1.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ]
                             ),
                           ),
                           Text(
@@ -60,13 +85,19 @@ class _LoginPageState extends State<LoginPage>{
                               fontFamily: 'Quicksand',
                               fontWeight: FontWeight.w700,
                               color: Colors.black.withOpacity(0.5),
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(0.0, 0.0),
+                                  blurRadius: 1.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ]
                             ),
                           ),
                         ],
                       ),
                     ),
-
-                    SizedBox(height: 20),
+                    SizedBox(height: 40),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                       child: Text(
@@ -75,6 +106,13 @@ class _LoginPageState extends State<LoginPage>{
                           fontSize: 30,
                           fontFamily: 'Roboto',
                           fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              offset: Offset(1.0, 1.0),
+                              blurRadius: 3.0,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ]
                         ),
                       ),
                     ),
@@ -85,9 +123,16 @@ class _LoginPageState extends State<LoginPage>{
                           Text(
                             'There',
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: 35,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ]
                             ),
                           ),
                           Text(
@@ -97,55 +142,116 @@ class _LoginPageState extends State<LoginPage>{
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
                               color: Colors.green,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ]
                             ),
                           )
                         ],
                       ),
                     ),
-
                     Container(
-                      padding: EdgeInsets.only(top: 35,left: 20,right: 20),
+                      padding: EdgeInsets.only(top: 35, left: 20, right: 20),
                       child: Column(
                         children: [
-                          TextField(
-                            decoration: InputDecoration(
-                              labelText: 'Email',
-                              labelStyle: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.green,
+                          Material(
+                            elevation: 10,
+                            borderRadius: BorderRadius.circular(30),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email, color: Colors.green,),
+                                fillColor: Colors.yellow.withOpacity(0.2),
+                                filled: true,
+                                labelText: 'Email',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                                hintText: 'Enter your email Id',
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Colors.grey.shade400,
+                                ),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      color: Colors.green,
+                                    ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color: Colors.green,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(height: 20),
-                          TextField(
-                            decoration: InputDecoration(
+                          Material(
+                            elevation: 10,
+                            borderRadius: BorderRadius.circular(30),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.lock, color: Colors.green,),
+                                suffixIcon: IconButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      print('Button Press');
+                                      _obscureText = !_obscureText;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                fillColor: Colors.yellow.withOpacity(0.2),
+                                filled: true,
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
                                   fontFamily: 'Roboto',
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,
-
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.green,
-                                    ),
+                                hintText: 'Enter your password',
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Colors.grey.shade400,
                                 ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                              validator: (val) => val!.length < 6 ? 'Password too short.' : null,
+                              onSaved: (val) => _password = val!,
+                              obscureText: _obscureText,
                             ),
-                            obscureText: true,
                           ),
                           SizedBox(height: 10),
                           Container(
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.centerRight,
                             child: TextButton(
-                              onPressed: (){},
+                              onPressed: () {},
                               child: Text(
                                 'Forgot Password',
                                 style: TextStyle(
@@ -157,9 +263,7 @@ class _LoginPageState extends State<LoginPage>{
                               ),
                             ),
                           ),
-
                           SizedBox(height: 30),
-
                           Container(
                             height: 50,
                             child: Material(
@@ -168,15 +272,15 @@ class _LoginPageState extends State<LoginPage>{
                               shadowColor: Colors.greenAccent,
                               elevation: 7,
                               child: GestureDetector(
-                                onTap: (){},
+                                onTap: () {},
                                 child: Center(
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Quicksand',
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 18,
                                       color: Colors.black,
-
                                     ),
                                   ),
                                 ),
@@ -186,13 +290,12 @@ class _LoginPageState extends State<LoginPage>{
                         ],
                       ),
                     )
-
                   ],
                 ),
               ),
-
               Container(
-                padding: EdgeInsets.fromLTRB(0, screenheight - (screenheight * 0.12), 0, 0),
+                padding: EdgeInsets.fromLTRB(
+                    0, screenheight - (screenheight * 0.12), 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -205,11 +308,11 @@ class _LoginPageState extends State<LoginPage>{
                       ),
                     ),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.push(
                           context,
                           PageTransition(
-                            type: PageTransitionType.fade,
+                            type: PageTransitionType.leftToRight,
                             child: RegisterPage(),
                           ),
                         );
@@ -235,4 +338,3 @@ class _LoginPageState extends State<LoginPage>{
     );
   }
 }
-

@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^1.2.1 # Added for splash screen
   page_transition: "^2.0.0" # Added for Page Transition Animation
+  font_awesome_flutter: ^9.1.0 # Added for icons
 
 dev_dependencies:
   flutter_test:

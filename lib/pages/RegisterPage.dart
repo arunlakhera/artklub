@@ -59,6 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 10),
                 Row(
                   children: [
+
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                       child: Text(
@@ -170,8 +171,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Text(
                                 'Create',
                                 style: TextStyle(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Quicksand',
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 18,
                                   color: Colors.black,
 
                                 ),
@@ -187,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           Text(
                             'Already have Account?',
                             style: TextStyle(
-                              fontFamily: 'Robto',
+                              fontFamily: 'Roboto',
                               fontSize: 14,
                               color: Colors.grey,
                             ),
@@ -197,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               Navigator.push(
                                 context,
                                 PageTransition(
-                                  type: PageTransitionType.fade,
+                                  type: PageTransitionType.rightToLeft,
                                   child: LoginPage(),
                                 ),
                               );
@@ -205,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: Text(
                               'Login',
                               style: TextStyle(
-                                fontFamily: 'Robto',
+                                fontFamily: 'Roboto',
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.green,
