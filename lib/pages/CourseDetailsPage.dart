@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/model/Course.dart';
+import 'package:flutter_apps/pages/JoinProgramPage.dart';
 import 'package:flutter_apps/utilities/AppColors.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CourseDetailsPage extends StatelessWidget {
   final Course courseSelected;
@@ -39,20 +41,20 @@ class CourseDetailsPage extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            Card(
-              child: Stack(
-                children: [
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10,right: 10, top: screenHeight * 0.095,bottom: 20),
-                      padding:
-                          EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
-                      decoration: BoxDecoration(
-                        color: courseSelected.getbgColor(),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
+            Stack(
+              children: [
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10,right: 10, top: screenHeight * 0.095,bottom: 20),
+
+                    child: Card(
+                      color: courseSelected.getbgColor(),
+                      elevation: 5,
                       child: Container(
-                        padding: EdgeInsets.only(left: 5, right: 5),
+                        padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -199,13 +201,13 @@ class CourseDetailsPage extends StatelessWidget {
                               alignment: Alignment.center,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   PageTransition(
-                                  //     type: PageTransitionType.fade,
-                                  //     child: CourseDetailsPage(courseSelected: this.courseSelected),
-                                  //   ),
-                                  // );
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: JoinProgramPage(courseSelected: this.courseSelected),
+                                    ),
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -227,56 +229,23 @@ class CourseDetailsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-
-
-
                           ],
                         ),
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: Image.asset(
-                      'assets/images/mascot.png',
-                      height: screenHeight * 0.2,
-                      width: screenWidth * 0.4,
-                        fit: BoxFit.fill,
-                    ),
+                ),
+                Positioned(
+                  top: 20,
+                  right: 20,
+                  child: Image.asset(
+                    'assets/images/mascot.png',
+                    height: screenHeight * 0.2,
+                    width: screenWidth * 0.4,
+                      fit: BoxFit.fill,
                   ),
-
-                  // Column(
-                  //   children: [
-                  //     Row(
-                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //       children: [
-                  //         Container(
-                  //           child: Text(
-                  //             courseSelected.getCourseName(),
-                  //             style: TextStyle(
-                  //               color: Colors.white,
-                  //               fontFamily: 'Roboto',
-                  //               fontWeight: FontWeight.bold,
-                  //               fontSize: 30,
-                  //               letterSpacing: 1,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         Container(
-                  //           alignment: Alignment.bottomRight,
-                  //           child: Image.asset(
-                  //             'assets/images/mascot.png',
-                  //             height: screenHeight * 0.25,
-                  //             width: screenWidth * 0.5,
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     )
-                  //   ],
-                  // ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

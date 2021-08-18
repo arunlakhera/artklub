@@ -60,7 +60,8 @@ class _CoursesPageState extends State<CoursesPage> {
 
     return Scaffold(
       body: SafeArea(
-        child: Stack(
+        child:
+        Stack(
           children: [
             Container(
               padding: EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 10),
@@ -93,7 +94,6 @@ class _CoursesPageState extends State<CoursesPage> {
               itemBuilder: (context, position) {
 
                 if(position == 0){
-
                   return Transform(
                     transform: Matrix4.identity()..rotateX(currentPageValue - position),
                     child: buildCourseWidget(
@@ -103,7 +103,8 @@ class _CoursesPageState extends State<CoursesPage> {
                     ),
                   );
                 }else if (position == 1){
-                  return Transform(
+                  return
+                    Transform(
                     transform: Matrix4.identity()..rotateX(currentPageValue - position),
                     child: buildCourseWidget(
                       screenHeight: screenHeight,
@@ -145,7 +146,7 @@ class _CoursesPageState extends State<CoursesPage> {
             ),
 
             Positioned(
-              bottom: 20,
+              bottom: screenHeight * 0.05,
               width: screenWidth,
               child: Align(
                 alignment: Alignment.center,
@@ -161,7 +162,7 @@ class _CoursesPageState extends State<CoursesPage> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -250,7 +251,7 @@ class _CoursesPageState extends State<CoursesPage> {
               Container(
                 padding: EdgeInsets.only(left: 10, right: 10),
                 alignment: Alignment.center,
-                child: ElevatedButton(
+                child: TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -261,6 +262,7 @@ class _CoursesPageState extends State<CoursesPage> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
+                      minimumSize: Size(100,50),
                       elevation: 5,
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(

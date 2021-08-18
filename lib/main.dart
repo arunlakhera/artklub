@@ -4,6 +4,7 @@ import 'package:flutter_apps/model/Course.dart';
 import 'package:flutter_apps/pages/CourseDetailsPage.dart';
 import 'package:flutter_apps/pages/ForgotPasswordPage.dart';
 import 'package:flutter_apps/pages/HomePage.dart';
+import 'package:flutter_apps/pages/JoinProgramPage.dart';
 import 'package:flutter_apps/pages/LoginPage.dart';
 import 'package:flutter_apps/pages/RegisterPage.dart';
 import 'package:page_transition/page_transition.dart';
@@ -71,6 +72,14 @@ class MyApp extends StatelessWidget {
           case '/CourseDetailsPage':
             return PageTransition(
               child: CourseDetailsPage(courseSelected: courseSelected),
+              type: PageTransitionType.fade,
+              settings: settings,
+              reverseDuration: Duration(seconds: 3),
+            );
+
+          case '/JoinProgramPage':
+            return PageTransition(
+              child: JoinProgramPage(courseSelected: courseSelected),
               type: PageTransitionType.fade,
               settings: settings,
               reverseDuration: Duration(seconds: 3),
