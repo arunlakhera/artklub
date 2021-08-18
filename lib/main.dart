@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/data/CourseData.dart';
+import 'package:flutter_apps/model/Course.dart';
 import 'package:flutter_apps/pages/CourseDetailsPage.dart';
 import 'package:flutter_apps/pages/ForgotPasswordPage.dart';
 import 'package:flutter_apps/pages/HomePage.dart';
@@ -12,6 +14,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  Course courseSelected = CourseData().courseRookie;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+            
           case '/RegisterPage':
             return PageTransition(
               child: RegisterPage(),
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+
           case '/LoginPage':
             return PageTransition(
               child: LoginPage(),
@@ -47,7 +51,7 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+
           case '/ForgotPasswordPage':
             return PageTransition(
               child: ForgotPasswordPage(),
@@ -55,7 +59,7 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+
           case '/HomePage':
             return PageTransition(
               child: HomePage(),
@@ -63,15 +67,15 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+
           case '/CourseDetailsPage':
             return PageTransition(
-              child: CourseDetailsPage(),
+              child: CourseDetailsPage(courseSelected: courseSelected),
               type: PageTransitionType.fade,
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
-            break;
+
           default:
             return null;
         }
