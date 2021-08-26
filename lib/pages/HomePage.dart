@@ -40,9 +40,7 @@ class _HomePageState extends State<HomePage> {
           height: screenHeight,
           width: screenWidth,
           color: AppColors.pageBgColor,
-          child:
-
-          selectPage(),
+          child: selectPage(),
         ),
       ),
     );

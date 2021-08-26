@@ -61,7 +61,7 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
           children: [
             ListView(
               scrollDirection: Axis.vertical,
-              padding: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.only(bottom: screenHeight * 0.07),
               children: [
                 Card(
                   color: widget.courseSelected.getbgColor(),
@@ -182,8 +182,6 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                         ),
 
                         SizedBox(height: 10),
-
-
                         Container(
                           height: screenHeight*0.12,
                           alignment: Alignment.center,
@@ -281,7 +279,6 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                         ),
 
                         SizedBox(height: 10),
-
                         Container(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -294,6 +291,7 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                           ),
                         ),
                         SizedBox(height: 2),
+
                         TextFormField(
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -468,32 +466,31 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
               ]
             ),
             Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: GestureDetector(
-                onTap: (){
-                  print('Send Request');
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 50,
-                    color: widget.courseSelected.getbgColor(),
-                    child: Text(
-                      'Send Request',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+              bottom: 10,
+              left: 10,
+              right: 10,
+              child: Container(
+                padding: EdgeInsets.only(left: 10,right: 10),
+                child: FloatingActionButton.extended(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.send,
+                    color: Colors.white,
+                  ),
+                  backgroundColor: Colors.black,
+                  label: Text(
+                    'Send Request',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-            ),
+            )
+
           ],
         ),
       ),

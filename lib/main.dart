@@ -84,6 +84,13 @@ class MyApp extends StatelessWidget {
               settings: settings,
               reverseDuration: Duration(seconds: 3),
             );
+          case '/MyAssignmentPage':
+            return PageTransition(
+              child: JoinProgramPage(courseSelected: courseSelected),
+              type: PageTransitionType.leftToRight,
+              settings: settings,
+              reverseDuration: Duration(seconds: 3),
+            );
 
           default:
             return null;

@@ -21,6 +21,7 @@ dependencies:
   dots_indicator: ^2.0.0
   animated_text_kit: ^4.2.1
   custom_picker: ^0.0.4
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
