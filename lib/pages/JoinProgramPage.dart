@@ -1,6 +1,8 @@
+import 'package:custom_picker/custom_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/model/Course.dart';
 import 'package:flutter_apps/utilities/AppColors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class JoinProgramPage extends StatefulWidget {
   final Course courseSelected;
@@ -11,7 +13,19 @@ class JoinProgramPage extends StatefulWidget {
 }
 
 class _JoinProgramPageState extends State<JoinProgramPage> {
+  var opt = [5, 17, 3];
+  var gender;
 
+  @override
+  void initState() {
+    gender = 'female';
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +48,6 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
           ),
           child: Text(
             'Join Program',
-            //widget.courseSelected.getCourseName() ,
             style: TextStyle(
               fontFamily: 'Roboto',
               fontSize: 16,
@@ -48,11 +61,12 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
           children: [
             ListView(
               scrollDirection: Axis.vertical,
+              padding: EdgeInsets.only(bottom: 50),
               children: [
                 Card(
                   color: widget.courseSelected.getbgColor(),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10,right: 20,top: 20,bottom: 10),
+                    padding: EdgeInsets.only(left: 10,right: 20,top: 20,bottom:10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -91,7 +105,6 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                 ),
                 Card(
                   elevation: 5,
-                  //color: AppColors.pageBgColor,//widget.courseSelected.getbgColor(),
                   child: Container(
                     padding: EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 10),
                     decoration: BoxDecoration(
@@ -100,14 +113,27 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                     child: Column(
                       children: [
 
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Student Details',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                        ),
+
                         TextFormField(
+                          keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.account_circle,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Student Name',
+                            labelText: 'Name',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -121,39 +147,162 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
+
                           ),
                         ),
 
-                        SizedBox(height: 5),
-                        Text(
-                          'Parent 1',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
+                        SizedBox(height: 10),
+                        //openDatePicker(),
+                        Container(
+                          height: screenHeight*0.1,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                padding: EdgeInsets.only(left: 5),
+                                child: Text(
+                                  'Date of Birth',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Colors.grey.shade600,
+                                  ),
+                                ),
+                              ),
+                              openDatePicker(),
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(height: 10),
+
+
+                        Container(
+                          height: screenHeight*0.12,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                padding: EdgeInsets.only(left: 5,top: 5),
+                                child: Text(
+                                  'Student is a...',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Colors.grey.shade600,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  GestureDetector(
+                                    onTap: (){
+                                      setState(() {
+                                        gender = 'male';
+                                      });
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                                      decoration: BoxDecoration(
+                                        color: gender == 'male' ? widget.courseSelected.getbgColor() : Colors.grey.shade300,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          FaIcon(
+                                            FontAwesomeIcons.male,
+                                            size: screenHeight * 0.04,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(width: 15),
+                                          Text(
+                                            'Boy',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Colors.white
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+                                  GestureDetector(
+                                    onTap: (){
+                                      setState(() {
+                                        gender = 'female';
+                                      });
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                                      decoration: BoxDecoration(
+                                        color: gender == 'female' ? widget.courseSelected.getbgColor() : Colors.grey.shade300,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          FaIcon(
+                                            FontAwesomeIcons.female,
+                                            size: screenHeight * 0.04,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(width: 15),
+                                          Text(
+                                            'Girl',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Colors.white
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(height: 10),
+
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Parent 1 Details',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.grey.shade600,
+                            ),
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.account_circle,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 1 Name',
+                            labelText: 'Name',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -167,29 +316,19 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
+
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.phone,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 1 Phone',
+                            labelText: 'Phone',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -203,29 +342,18 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.email,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 1 Email',
+                            labelText: 'Email',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -239,39 +367,31 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
                           ),
                         ),
 
-                        SizedBox(height: 5),
-                        Text(
-                          'Parent 2',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
+                        SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Parent 2 Details',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.grey.shade600,
+                            ),
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.account_circle,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 2 Name',
+                            labelText: 'Name',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -285,29 +405,18 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.phone,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 2 Phone',
+                            labelText: 'Phone',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -321,29 +430,19 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
+
                           ),
                         ),
                         SizedBox(height: 2),
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.email,
                               color: widget.courseSelected.getbgColor(),
                             ),
                             filled: true,
-                            labelText: 'Parent 2 Email',
+                            labelText: 'Email',
                             labelStyle: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
@@ -357,18 +456,7 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                               fontSize: 12,
                               color: Colors.grey.shade400,
                             ),
-                            // border: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
-                            // focusedBorder: OutlineInputBorder(
-                            //   borderRadius: BorderRadius.circular(30),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.green,
-                            //   ),
-                            // ),
+
                           ),
                         ),
 
@@ -409,6 +497,101 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget openDatePicker() {
+
+    var now = new DateTime.now();
+
+    return CustomPicker(
+      // deciding list whether to show loop over popup items
+      optionLoop: [false, false, false],
+      // give popup height
+      popupHeight: MediaQuery.of(context).size.height * 0.3,
+      // where to show popupmenu
+      below: true,
+      // give where to place popup vertically
+      verticalOffset: 10,
+      // handle all changes here
+      handleChange: (list) {
+        print(list);
+      },
+      // to include yes no dialog or not
+      yesNo: true,
+      //give color to popup selected option
+      popUpSelColor: Colors.green.withAlpha(50),
+      // customize text style for each popUp list
+      popUpTextStyle: [
+        TextStyle(color: Colors.grey.shade600, fontSize: 18),
+        TextStyle(color: Colors.grey.shade600, fontSize: 18),
+        TextStyle(color: Colors.grey.shade600, fontSize: 18),
+      ],
+      // customize text style for each list
+      widTextStyle: [
+        TextStyle(color: Colors.white, fontSize: 18),
+        TextStyle(color: Colors.white, fontSize: 18),
+        TextStyle(color: Colors.white, fontSize: 18),
+      ],
+      // customize divider color
+      divColor: Colors.grey.shade200,
+      //add padding
+      contentPadding: const EdgeInsets.all(7),
+      //give a decoration to your popupmenu
+      popUpDecoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(width: 2, color: Colors.white),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0x33000000).withAlpha(50),
+              offset: Offset(2, 4),
+              blurRadius: 7,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(10),
+      ),
+      // decorate your picker widget
+      widDecoration: BoxDecoration(
+        color: widget.courseSelected.getbgColor(),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0x33000000).withAlpha(50),
+            offset: Offset(2, 4),
+            blurRadius: 7,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // input all list you want to display in popupmenu
+      list: [
+        [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec'
+        ],
+        List.generate(31, (index) => '${index + 1}').toList(),
+        List.generate(100, (index) => '${now.year - index}').toList(),
+      ],
+      // control flex property of picker children
+      wtList: [3, 1, 2],
+      // callback that'll be call when option of YesNo dialog is clicked
+      onChanged: (List<int> value) {
+        opt = value;
+        setState(() {
+          print('Selected Date:' + value.toString());
+        });
+      },
+      //give initial selected item indicies
+      selected: opt,
     );
   }
 }
