@@ -64,7 +64,7 @@ class _CoursesPageState extends State<CoursesPage> {
         Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 10),
+              padding: EdgeInsets.only(left: 10,right: 10, top: 5, bottom: 5),
               color: activeColor.withOpacity(0.2),
               width: screenWidth,
               child: AnimatedTextKit(
@@ -173,7 +173,7 @@ class _CoursesPageState extends State<CoursesPage> {
           {screenHeight, screenWidth, courseSelected}) =>
       Center(
         child: Container(
-          height: screenHeight * 0.6,
+          height: screenHeight * 0.65,
           width: screenWidth - 20,
           padding: EdgeInsets.only(top: 10, left: 10, right: 10),
           decoration: BoxDecoration(

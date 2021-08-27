@@ -104,7 +104,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     color: currentFlag ? Colors.deepOrange : Colors.grey,
-                    fontSize: currentFlag ? 18 : 14,
+                    fontSize: currentFlag ? 16 : 14,
                     fontWeight: currentFlag ? FontWeight.w900 : FontWeight.w300,
                   ),
                 ),
@@ -131,7 +131,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     color: completedFlag ? Colors.deepOrange : Colors.grey,
-                    fontSize: completedFlag ? 18 : 14,
+                    fontSize: completedFlag ? 16 : 14,
                     fontWeight: completedFlag ? FontWeight.w900 : FontWeight.w300,
                   ),
                 ),
@@ -158,7 +158,7 @@ class _MyCoursesPageState extends State<MyCoursesPage> {
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     color: requestsFlag ? Colors.deepOrange : Colors.grey,
-                    fontSize: requestsFlag ? 18 : 14,
+                    fontSize: requestsFlag ? 16 : 14,
                     fontWeight: requestsFlag? FontWeight.w900 : FontWeight.w300,
                   ),
                 ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/pages/EditMyProfilePage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({Key? key}) : super(key: key);
@@ -9,8 +11,6 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,19 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     bottom: 5,right: 10,
                     child: FloatingActionButton(
                       elevation: 5,
-                      onPressed: (){},
+                      backgroundColor: Colors.pink.shade400,
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: EditMyProfilePage(),
+                          ),
+                        );
+                      },
                       child: Icon(
                         Icons.edit,
+                        color: Colors.white,
                       ),
                     ),
                   )
@@ -374,7 +384,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     Container(
                       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Colors.pink.shade400,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(

@@ -183,7 +183,6 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
 
                         SizedBox(height: 10),
                         Container(
-                          height: screenHeight*0.12,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200.withOpacity(0.5),
@@ -458,6 +457,7 @@ class _JoinProgramPageState extends State<JoinProgramPage> {
                           ),
                         ),
 
+                        SizedBox(height: 10),
                       ],
                     ),
                   ),

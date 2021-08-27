@@ -49,12 +49,12 @@ class CourseDetailsPage extends StatelessWidget {
           children: [
             ListView(
               scrollDirection: Axis.vertical,
-              padding: EdgeInsets.only(top: screenHeight *0.01, bottom: screenHeight *0.1),
+              padding: EdgeInsets.only(top: screenHeight *0.001, bottom: screenHeight * 0.1),
               children: [
                 Stack(
                   children: [
                     Container(
-                      height: screenHeight * 0.6,
+                      height: screenHeight * 0.82,
                       padding: EdgeInsets.only(bottom: 10),
                       child: Card(
                         color: courseSelected.getbgColor(),
@@ -151,12 +151,37 @@ class CourseDetailsPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-
+                              SizedBox(height: screenHeight * 0.02),
+                              CarouselSlider(
+                                options: CarouselOptions(
+                                  height: screenHeight * 0.25,
+                                  viewportFraction: 0.7,
+                                  autoPlay: true,
+                                ),
+                                items: imageList.map((i) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(color: Colors.white),
+                                        child: Card(
+                                          elevation: 3,
+                                          child: Image.asset(
+                                            i,
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }).toList(),
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
+
                     Positioned(
                       top: screenHeight*0.02,
                       right: screenHeight*0.02,
@@ -170,43 +195,17 @@ class CourseDetailsPage extends StatelessWidget {
                   ],
                 ),
 
-                Card(
-                  elevation: 5,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        height: screenHeight * 0.25,
-                        viewportFraction: 0.7,
-                        autoPlay: true,
-                    ),
-                    items: imageList.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(color: Colors.grey.shade50),
-                            child: Card(
-                              child: Image.asset(
-                                i,
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
-                )
-
               ],
             ),
 
             Positioned(
-              bottom: 10,
-              left: 10,
-              right: 10,
+              bottom: 0,
+              left: 0,
+              right: 0,
               child: Container(
                 padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
                 child: FloatingActionButton.extended(
+                  shape: Border(),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -219,16 +218,16 @@ class CourseDetailsPage extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.send,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.black,
                   label: Text(
                     'Join this Course',
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
